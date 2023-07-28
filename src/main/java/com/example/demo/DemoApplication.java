@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import jakarta.annotation.Nonnull;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -137,7 +136,7 @@ public class DemoApplication extends ListenerAdapter {
     }
 
 
-    public void answerToMaster(@Nonnull MessageReceivedEvent event) {
+    public void answerToMaster(MessageReceivedEvent event) {
         String message = event.getMessage().getContentRaw();
         if (message.equalsIgnoreCase("일어나라 나의 하수인이여")) {
             event.getChannel().sendMessage("예스 마스터...").queue();
