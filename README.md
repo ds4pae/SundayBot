@@ -8,6 +8,7 @@
 
 ### 이용 플랫폼<br>
 <!--<img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=java&logoColor=red" alt="Java">-->
-- **Java**
-- **Spring**
+- **Java** - 17
+- **Spring** - 3.1.2
+- **maven** - 4.0.0
 
