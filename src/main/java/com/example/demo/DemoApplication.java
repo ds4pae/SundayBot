@@ -28,6 +28,7 @@ public class DemoApplication extends ListenerAdapter {
     private static final String TOKEN = "MTEzMzM1NDUyNzU4ODg3NjQwOA.GUnxVJ.Jn4Bp-pOjgJcEouc4g6CyTJ4H9udVvcn8hILfs";
     private static final String url = "https://maplestory.nexon.com/News/Event/Ongoing";
     private static final String nextPageUrl = "https://maplestory.nexon.com/News/Event/Closed";
+
     public static void main(String[] args) throws Exception {
         JDA jda = JDABuilder.createDefault(TOKEN)
                 .setActivity(Activity.playing("개발"))
@@ -67,7 +68,8 @@ public class DemoApplication extends ListenerAdapter {
             for (Element link : links) {
                 String linkUrl = link.attr("abs:href");
                 if (link.text().contains(keyword)) {
-                    result.append("### 이번주 공지 -> ").append("\n");
+                    result.append("## 이번주 공지가 나왔어요.").append("\n");
+                    result.append("### 이번주 공지 -> ");
                     result.append("[클릭](").append(linkUrl).append(")").append("\n");
                     imageURL = getPNGurl(linkUrl);
                     foundKeyword = true;
@@ -82,8 +84,6 @@ public class DemoApplication extends ListenerAdapter {
             }
             // 첫 번째 페이지에서 키워드를 찾지 못한 경우 다음 페이지에서 키워드 찾기
             if (!foundKeyword) {
-
-
                 doc = Jsoup.connect(nextPageUrl).get();
                 links = doc.select("a[href]");
 
@@ -104,15 +104,14 @@ public class DemoApplication extends ListenerAdapter {
         }
 
 
-
         EmbedBuilder embedBuilder = new EmbedBuilder()
                 .setTitle("썬데이 알림")
                 .setDescription(result.toString())
                 .setColor(Color.GREEN);
 
-        if (!imageURL.isEmpty()) {
-            // 이미지가 있다면, setThumbnail 메소드를 사용하여 임베드의 썸네일로 이미지를 표시합니다.
-            embedBuilder.setThumbnail(imageURL);
+       if (!imageURL.isEmpty()) {
+            // 이미지가 있다면, setImage 메소드를 사용하여 임베드에 이미지를 표시합니다.
+            embedBuilder.setImage(imageURL);
             System.out.println("이미지 있음");
         } else if (imageURL.isEmpty()) {
             System.out.println("이미지 없음");
@@ -136,10 +135,6 @@ public class DemoApplication extends ListenerAdapter {
 
         return "";
     }
-
-
-
-
 
 
     public void answerToMaster(@Nonnull MessageReceivedEvent event) {
