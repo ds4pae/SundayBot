@@ -34,7 +34,6 @@ public class DemoApplication extends ListenerAdapter {
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .addEventListeners(new DemoApplication()) // 한 번만 추가
                 .build();
-        // JDABuilder.createDefault()를 호출한 곳에서 ListenerAdapter를 등록하고 있으므로, SpringApplication.run()을 호출할 필요가 없습니다.
     }
 
     @Override
@@ -43,10 +42,10 @@ public class DemoApplication extends ListenerAdapter {
 
         String message = event.getMessage().getContentRaw();
         if (message.startsWith("!썬데이")) {
-            scrapeWebpage(event); // 스크래핑 함수를 호출하도록 수정합니다.
+            scrapeWebpage(event); // 스크래핑 함수를 호출
         }
         if (message.startsWith("일어나라 나의 하수인이여")) {
-            answerToMaster(event); // 스크래핑 함수를 호출하도록 수정합니다.
+            answerToMaster(event); // 스크래핑 함수를 호출
         }
 
     }
@@ -109,7 +108,7 @@ public class DemoApplication extends ListenerAdapter {
                 .setColor(Color.GREEN);
 
        if (!imageURL.isEmpty()) {
-            // 이미지가 있다면, setImage 메소드를 사용하여 임베드에 이미지를 표시합니다.
+            // 이미지가 있다면, 임베드에 이미지를 표시
             embedBuilder.setImage(imageURL);
             System.out.println("이미지 있음");
         } else if (imageURL.isEmpty()) {
@@ -134,14 +133,5 @@ public class DemoApplication extends ListenerAdapter {
 
         return "";
     }
-
-
-    public void answerToMaster(MessageReceivedEvent event) {
-        String message = event.getMessage().getContentRaw();
-        if (message.equalsIgnoreCase("일어나라 나의 하수인이여")) {
-            event.getChannel().sendMessage("예스 마스터...").queue();
-        }
-    }
-
 
 }
