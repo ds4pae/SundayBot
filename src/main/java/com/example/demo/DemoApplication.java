@@ -24,7 +24,8 @@ import net.dv8tion.jda.api.entities.Message;
 
 @SpringBootApplication
 public class DemoApplication extends ListenerAdapter {
-    private static final String TOKEN = "MTEzMzM1NDUyNzU4ODg3NjQwOA.GUnxVJ.Jn4Bp-pOjgJcEouc4g6CyTJ4H9udVvcn8hILfs";
+    private static final String TOKEN = "여기에 토큰 삽입 할 것";
+    
     private static final String url = "https://maplestory.nexon.com/News/Event/Ongoing";
     private static final String nextPageUrl = "https://maplestory.nexon.com/News/Event/Closed";
 
