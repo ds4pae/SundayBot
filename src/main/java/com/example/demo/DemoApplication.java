@@ -45,9 +45,6 @@ public class DemoApplication extends ListenerAdapter {
         if (message.startsWith("!썬데이")) {
             scrapeWebpage(event); // 스크래핑 함수를 호출
         }
-        if (message.startsWith("일어나라 나의 하수인이여")) {
-            answerToMaster(event); // 스크래핑 함수를 호출
-        }
 
     }
 
